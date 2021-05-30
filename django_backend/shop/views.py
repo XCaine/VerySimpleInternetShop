@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
+from django.db.models import Q
 from django.http import HttpResponse
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 from rest_framework.decorators import action
 
@@ -10,6 +12,8 @@ from shop.serializers import CustomerSerializer, ProductSerializer, OrderSeriali
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['username']
 
 
 class CustomerViewSet(viewsets.ModelViewSet):
@@ -33,3 +37,16 @@ class ProductViewSet(viewsets.ModelViewSet):
     def get_image(self, request, *args, **kwargs):
         image = Product.objects.get(id=1).image
         return HttpResponse(image, content_type="image/png")
+
+    @action(detail=True, methods=['get'])
+    def get_filtered_products(self, request, *args, **kwargs):
+        test_filter = "test"
+        filtered_products = self.get_object().filter(Q(description__contains=test_filter) | Q(name__contains=test_filter))
+        '''
+        Doesn't work
+        '''
+        #search_value = request.GET.get('search_value')
+
+        #filtered_products = Product.objects.filter(Q(description__contains=test_filter) | Q(name__contains=test_filter))
+        product_serializer = self.serializer_class(filtered_products, many=True) #ProductSerializer(filtered_products, many=True)
+        return HttpResponse(product_serializer.data, safe=False)
