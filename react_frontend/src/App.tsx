@@ -24,9 +24,9 @@ const App = () => {
     const [basket, setBasket] = useState<Product[]>([]);
     const [currentOrderNumber, setCurrentOrderNumber] = useState<string>("");
 
-    useEffect(() => {
-        console.log(basket);
-    }, [basket])
+    // useEffect(() => {
+    //     console.log(basket);
+    // }, [basket])
 
     return (
         <div className="App">
@@ -41,7 +41,7 @@ const App = () => {
                     <Route exact path="/basket">
                         <BasketPage basket={basket} setBasket={setBasket}/>
                     </Route>
-                    <Route exact path="/about">
+                    <Route exact path="/contact">
                         <AboutPage/>
                     </Route>
                     <Route exact path="/users">

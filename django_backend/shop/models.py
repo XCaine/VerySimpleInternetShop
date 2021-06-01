@@ -6,7 +6,7 @@ class Customer(models.Model):
     id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=100, unique=True)
+    email = models.EmailField(max_length=100)
     street = models.CharField(max_length=100, null=True)
     street_number = models.CharField(max_length=10, null=True)
     city = models.CharField(max_length=100, null=True)

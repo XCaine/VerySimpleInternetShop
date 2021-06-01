@@ -42,9 +42,6 @@ class ProductViewSet(viewsets.ModelViewSet):
     def get_filtered_products(self, request, *args, **kwargs):
         test_filter = "test"
         filtered_products = self.get_object().filter(Q(description__contains=test_filter) | Q(name__contains=test_filter))
-        '''
-        Doesn't work
-        '''
         #search_value = request.GET.get('search_value')
 
         #filtered_products = Product.objects.filter(Q(description__contains=test_filter) | Q(name__contains=test_filter))

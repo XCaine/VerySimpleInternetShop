@@ -1,9 +1,10 @@
 const AboutPage = () => {
     return (
         <>
-            <h1>This is a simple internet shop created as a student project</h1>
-            <h2>I gotta admit - it's all over the place. Objectively, not the best work.</h2>
-            <h2>You'd rather not use any components from here on your own.</h2>
+            <h1>Contact information:</h1>
+            <h2>Street SampleStreet City sampleCity address sampleAddress</h2>
+            <h2>Telephone: 123 456 789</h2>
+			<h2>Email address: test@shop.com</h2>
         </>
     );
 }

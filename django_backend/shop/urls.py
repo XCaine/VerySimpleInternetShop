@@ -1,8 +1,6 @@
-from django.conf.urls.static import static
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from django_backend import settings
 from shop import views
 
 router = DefaultRouter()

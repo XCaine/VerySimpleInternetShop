@@ -26,10 +26,10 @@ const Navbar = (props: {
             }
         },
         {
-            label: 'About',
+            label: 'Contact',
             icon: 'pi pi-fw pi-briefcase',
             command: (event: any) => {
-                history.push("/about");
+                history.push("/contact");
             }
         },
         {
